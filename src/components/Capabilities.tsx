@@ -60,7 +60,7 @@ function RagPipelineCard() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Terminal className="w-4 h-4 text-white/80" />
-          <h3 className="text-xl font-semibold tracking-tight">RAG Pipeline</h3>
+          <h3 className="text-xl font-semibold tracking-tight">Vision Transformer</h3>
         </div>
         <span className="text-[11px] text-white/60">~42 lines</span>
       </div>

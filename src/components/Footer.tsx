@@ -51,10 +51,10 @@ export default function Footer() {
               <p className="text-sm text-white/70">Social</p>
               <div className="flex flex-wrap gap-3 mt-2">
                 {[
-                  { href: social.twitter, Icon: Twitter },
-                  { href: social.github, Icon: Github },
-                  { href: social.website, Icon: Globe },
                   { href: social.linkedin, Icon: Linkedin },
+                  { href: social.github, Icon: Github },
+                  { href: social.twitter, Icon: Twitter },
+                  { href: social.website, Icon: Globe },
                 ].map(({ href, Icon }) => (
                   <a
                     key={href + Icon.displayName}

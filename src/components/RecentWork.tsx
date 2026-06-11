@@ -1,10 +1,10 @@
 import {
   Bot,
-  Workflow,
   Code2,
   Database,
-  Brain,
-  Server,
+  Shield,
+  Eye,
+  Camera,
   ArrowUpRight,
   type LucideIcon,
 } from 'lucide-react'
@@ -12,11 +12,11 @@ import { projects, type Project } from '../data/content'
 
 const iconMap: Record<string, LucideIcon> = {
   Bot,
-  Workflow,
   Code2,
   Database,
-  Brain,
-  Server,
+  Shield,
+  Eye,
+  Camera,
 }
 
 function ProjectCard({ project }: { project: Project }) {
