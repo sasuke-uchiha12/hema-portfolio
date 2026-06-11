@@ -6,14 +6,12 @@ import Capabilities from './components/Capabilities'
 import ModelEvals from './components/ModelEvals'
 import About from './components/About'
 import Footer from './components/Footer'
+import HeroBackground from './components/HeroBackground'
 
 export default function App() {
   return (
     <div className="min-h-screen">
-      {/* Subtle gradient behind hero */}
-      <div className="absolute top-0 w-full -z-10 h-[815px]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.08),transparent)]" />
-      </div>
+      <HeroBackground />
 
       <Navbar />
       <Hero />
