@@ -3,13 +3,13 @@ export const identity = {
   name: 'Hemashruthi Durairaj',
   title: 'AI & ML Engineer',
   tagline:
-    'Pursuing a Master\'s in Data Science & AI at Universität des Saarlandes. I build systems that learn, detect, and create — from swarm-intelligence DDoS detectors to generative AI pipelines in cybersecurity.',
+    'Pursuing a Master\'s in Data Science & AI at Universität des Saarlandes. I build intelligent systems — from vision transformers and RAG pipelines to generative AI applications — blending research rigour with hands-on engineering.',
   email: 'hemashruthi1220@gmail.com',
   resumeUrl: '#',
   location: 'Saarbrücken, Germany',
   locationSub: 'Open to remote & relocation',
-  focus: 'AI / ML & Research',
-  focusSub: 'GenAI, CV, Cybersecurity',
+  focus: 'Data Science & AI',
+  focusSub: 'GenAI, CV, ML research',
   availability: 'Open to opportunities',
   availabilitySub: 'Internships & research roles',
 }
@@ -134,7 +134,7 @@ export const techStack = {
     'CNNs / LSTMs',
   ],
   focus:
-    'Machine learning research, swarm intelligence, DDoS detection in SDN, generative AI for cybersecurity, retrieval-augmented generation, and computer vision with Transformers.',
+    'Machine learning research, generative AI, retrieval-augmented generation, computer vision with Transformers, and building intelligent end-to-end applications.',
 }
 
 // ─── CODE SNIPPET ─────────────────────────────────────────────────────────────
@@ -228,14 +228,14 @@ export const evals = {
 export const about = {
   image: '/images/e636d5f8-9fec-44fe-b4dd-4ccb5a90c3da_1600w.jpg',
   imageAlt: 'Workspace',
-  bio: "I'm Hemashruthi — an AI and ML enthusiast currently pursuing my Master's in Data Science and AI at Universität des Saarlandes. From building DDoS detection systems with swarm intelligence to integrating GenAI into cybersecurity workflows, I'm drawn to research that bridges curiosity with real-world impact. I also have a strong creative side — design thinking runs through everything I build.",
+  bio: "I'm Hemashruthi — an AI and ML enthusiast currently pursuing my Master's in Data Science and AI at Universität des Saarlandes. I'm drawn to research that turns curiosity into impact: vision transformers, generative AI, retrieval-augmented systems, and intelligent applications. I also have a strong creative side — design thinking runs through everything I build.",
   stats: [
     { value: '8.58', label: 'CGPA' },
     { value: '5+', label: 'Projects' },
     { value: '7+', label: 'Certifications' },
   ],
   currentlyLearning:
-    'Deep diving into Data Science & AI foundations at Saarland, exploring advanced NLP, and expanding my research on ML-based network security.',
+    'Deep diving into Data Science & AI foundations at Saarland, exploring advanced NLP, diffusion models, and building more intuition around transformer architectures.',
 }
 
 // ─── SOCIAL / CONTACT ────────────────────────────────────────────────────────

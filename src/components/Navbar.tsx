@@ -17,7 +17,7 @@ export default function Navbar() {
     <header className="max-w-7xl mx-auto px-4 sm:px-6 pt-6">
       <nav className="flex items-center justify-between border-b border-white/10 pb-4">
         {/* Brand */}
-        <a href="#" className="inline-flex items-center gap-2">
+        {/* <a href="#" className="inline-flex items-center gap-2">
           <svg
             className="w-9 h-9 md:w-14 md:h-14"
             viewBox="0 0 48 48"
@@ -27,7 +27,7 @@ export default function Navbar() {
             <path d="M24 8 L40 36 H8 Z" fill="currentColor" />
           </svg>
           <span className="text-sm sm:text-base font-medium tracking-tight">{identity.name}</span>
-        </a>
+        </a> */}
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-6">

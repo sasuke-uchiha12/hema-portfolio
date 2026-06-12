@@ -1,7 +1,8 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import RecentWork from './components/RecentWork'
-import TrustedBy from './components/TrustedBy'
+import TechStackBanner from './components/TechStackBanner'
+// import TrustedBy from './components/TrustedBy'  // kept for reference
 import Capabilities from './components/Capabilities'
 import ModelEvals from './components/ModelEvals'
 import About from './components/About'
@@ -16,7 +17,7 @@ export default function App() {
       <Navbar />
       <Hero />
       <RecentWork />
-      <TrustedBy />
+      <TechStackBanner />
       <Capabilities />
 
       {/* Evals + About side-by-side (matches original layout) */}

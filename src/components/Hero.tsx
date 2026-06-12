@@ -8,7 +8,7 @@ export default function Hero() {
         {/* Left col */}
         <div className="lg:col-span-7">
           <h1 className="leading-none text-white tracking-tight">
-            <span className="block text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[7vw] font-semibold">
+            <span className="block text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[6.5vw] font-semibold">
               {identity.name.split(' ').map((word, i) => (
                 <span key={i} className={i > 0 ? 'block' : ''}>
                   <span className="tracking-tighter">{word}</span>
