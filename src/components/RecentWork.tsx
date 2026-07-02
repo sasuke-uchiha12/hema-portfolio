@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   Bot,
   Code2,
@@ -20,16 +21,25 @@ const iconMap: Record<string, LucideIcon> = {
 }
 
 function ProjectCard({ project }: { project: Project }) {
+  const [hovered, setHovered] = useState(false)
   const Icon = iconMap[project.categoryIcon] ?? Bot
   const aspectClass = project.aspect === '16/9' ? 'aspect-[16/9]' : 'aspect-[4/3]'
 
   return (
-    <article className="group break-inside-avoid mb-5 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+    <article
+      className="break-inside-avoid mb-5 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
       <div className={`relative ${aspectClass}`}>
         <img
           src={project.image}
           alt={project.alt}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            transform: hovered ? 'scale(1.03)' : 'scale(1)',
+            transition: 'transform 500ms cubic-bezier(0.4, 0, 0.2, 1)',
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
       </div>

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Icon } from '@iconify/react'
 
 type TechItem = {
@@ -14,48 +15,72 @@ const groups: TechGroup[] = [
   {
     heading: 'Languages',
     items: [
-      { icon: 'skill-icons:python-dark', label: 'Python' },
-      { icon: 'skill-icons:typescript', label: 'TypeScript' },
-      { icon: 'skill-icons:javascript', label: 'JavaScript' },
+      { icon: 'simple-icons:python', label: 'Python' },
+      { icon: 'simple-icons:typescript', label: 'TypeScript' },
+      { icon: 'simple-icons:javascript', label: 'JavaScript' },
     ],
   },
   {
     heading: 'AI & ML',
     items: [
-      { icon: 'skill-icons:pytorch-dark', label: 'PyTorch' },
-      { icon: 'skill-icons:tensorflow-dark', label: 'TensorFlow' },
-      { icon: 'skill-icons:scikitlearn-dark', label: 'Scikit-learn' },
-      { icon: 'skill-icons:opencv-dark', label: 'OpenCV' },
-      { icon: 'logos:hugging-face-icon', label: 'Hugging Face' },
+      { icon: 'simple-icons:pytorch', label: 'PyTorch' },
+      { icon: 'simple-icons:tensorflow', label: 'TensorFlow' },
+      { icon: 'simple-icons:scikitlearn', label: 'Scikit-learn' },
+      { icon: 'simple-icons:opencv', label: 'OpenCV' },
+      { icon: 'simple-icons:huggingface', label: 'Hugging Face' },
     ],
   },
   {
     heading: 'Web & UI',
     items: [
-      { icon: 'skill-icons:react-dark', label: 'React' },
-      { icon: 'skill-icons:vuejs-dark', label: 'Vue / Vuetify' },
-      { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind' },
+      { icon: 'simple-icons:react', label: 'React' },
+      { icon: 'simple-icons:vuedotjs', label: 'Vue / Vuetify' },
+      { icon: 'simple-icons:tailwindcss', label: 'Tailwind' },
     ],
   },
   {
     heading: 'Tools',
     items: [
-      { icon: 'skill-icons:jupyter-dark', label: 'Jupyter' },
-      { icon: 'skill-icons:git', label: 'Git' },
-      { icon: 'skill-icons:github-dark', label: 'GitHub' },
-      { icon: 'skill-icons:vscode-dark', label: 'VS Code' },
-      { icon: 'skill-icons:linux-dark', label: 'Linux' },
+      { icon: 'simple-icons:jupyter', label: 'Jupyter' },
+      { icon: 'simple-icons:git', label: 'Git' },
+      { icon: 'simple-icons:github', label: 'GitHub' },
+      { icon: 'simple-icons:visualstudiocode', label: 'VS Code' },
+      { icon: 'simple-icons:linux', label: 'Linux' },
     ],
   },
 ]
 
 function TechBadge({ icon, label }: TechItem) {
+  const [hovered, setHovered] = useState(false)
   return (
-    <div className="flex flex-col items-center gap-2 group">
-      <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-200">
-        <Icon icon={icon} width={28} height={28} />
+    <div
+      className="flex flex-col items-center gap-2 cursor-default"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div
+        className="w-12 h-12 rounded-xl border flex items-center justify-center transition-all duration-300"
+        style={{
+          background: hovered ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.04)',
+          borderColor: hovered ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.10)',
+          transform: hovered ? 'translateY(-2px)' : 'translateY(0)',
+          boxShadow: hovered ? '0 8px 20px -6px rgba(0,0,0,0.6)' : 'none',
+        }}
+      >
+        <Icon
+          icon={icon}
+          width={24}
+          height={24}
+          style={{
+            color: hovered ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.55)',
+            transition: 'color 0.3s',
+          }}
+        />
       </div>
-      <span className="text-[11px] text-white/50 group-hover:text-white/80 transition-colors tracking-tight text-center">
+      <span
+        className="text-[11px] tracking-tight text-center transition-colors duration-300"
+        style={{ color: hovered ? 'rgba(255,255,255,0.80)' : 'rgba(255,255,255,0.40)' }}
+      >
         {label}
       </span>
     </div>

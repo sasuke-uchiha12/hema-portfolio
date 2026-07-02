@@ -24,7 +24,7 @@ export const heroStats = [
 // ─── HERO PHOTO ───────────────────────────────────────────────────────────────
 // TODO: Replace with Hema's actual photo
 export const heroImage = {
-  src: '/images/9b22c33a-b017-42bd-bab5-89be63576edd_800w.jpg',
+  src: '/images/hema-dp1.jpeg',
   alt: 'Hemashruthi Durairaj',
 }
 
