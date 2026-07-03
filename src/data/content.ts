@@ -137,31 +137,12 @@ export const techStack = {
     'Machine learning research, generative AI, retrieval-augmented generation, computer vision with Transformers, and building intelligent end-to-end applications.',
 }
 
-// ─── CODE SNIPPET ─────────────────────────────────────────────────────────────
-export const codeSnippet = `import torch
-from torch import nn
-
-class PatchEmbedding(nn.Module):
-    def __init__(self, img_size=32, patch_size=4,
-                 in_channels=3, embed_dim=128):
-        super().__init__()
-        self.proj = nn.Conv2d(
-            in_channels, embed_dim, patch_size, patch_size
-        )
-        self.cls_token = nn.Parameter(
-            torch.zeros(1, 1, embed_dim)
-        )
-
-    def forward(self, x):
-        x = self.proj(x).flatten(2).transpose(1, 2)
-        cls = self.cls_token.expand(x.shape[0], -1, -1)
-        return torch.cat([cls, x], dim=1)`
-
 // ─── TIMELINE ────────────────────────────────────────────────────────────────
 export type TimelineItem = {
   year: string
   role: string
   description: string
+  type: 'education' | 'work'
   current?: boolean
 }
 
@@ -171,6 +152,7 @@ export const timeline: TimelineItem[] = [
     role: "Master's — Data Science & AI",
     description:
       'Pursuing M.Sc. in Data Science and Artificial Intelligence at Universität des Saarlandes, Germany — one of Europe\'s leading AI research hubs (CISPA, DFKI, MPI).',
+    type: 'education',
     current: true,
   },
   {
@@ -178,18 +160,79 @@ export const timeline: TimelineItem[] = [
     role: 'Project Intern — SETS, Govt. of India',
     description:
       'Integrated Generative AI into cyber threat hunting at SETS-STARS program. Delivered context-rich, explainable threat insights under Scientist-C guidance.',
+    type: 'work',
   },
   {
     year: 'Feb 2024 — Sep 2024',
     role: 'Research Intern — CEG / Anna University',
     description:
       'Engineered HIVESHIELD in the RCC Lab under Prof. Dr. K. Murugan — a DDoS detection system using Swarm Intelligence ML in Software-Defined Networking.',
+    type: 'work',
   },
   {
     year: 'Jun 2023 — Dec 2023',
     role: 'Software Developer Intern — NGP Websmart',
     description:
       'Built and delivered frontend features with React.js and Vuetify in a 7-month internship at NGP Websmart Pvt. Ltd., Chennai.',
+    type: 'work',
+  },
+  {
+    year: '2020 — Jun 2025',
+    role: 'Master of Science — Information Technology',
+    description:
+      'Completed an M.S. in Information Technology at College of Engineering, Guindy, Anna University — graduating with a CGPA of 8.58.',
+    type: 'education',
+  },
+]
+
+// ─── CERTIFICATIONS ──────────────────────────────────────────────────────────
+export type Certification = {
+  title: string
+  issuer: string
+  date: string
+  url?: string
+}
+
+export const certifications: Certification[] = [
+  {
+    title: "CS50's Introduction to Artificial Intelligence with Python",
+    issuer: 'edX (Harvard University)',
+    date: 'Dec 2024',
+    url: 'https://courses.edx.org/certificates/f793bbdacf4a4135b923eaa858045413',
+  },
+  {
+    title: 'Supervised Machine Learning: Regression and Classification',
+    issuer: 'DeepLearning.AI · Stanford Online',
+    date: 'Oct 2024',
+    url: 'https://www.coursera.org/account/accomplishments/verify/9X1Z8ZDNUBPX',
+  },
+  {
+    title: 'AI & Cloud Conference 2024',
+    issuer: 'TechXConf',
+    date: 'Nov 2024',
+    url: 'https://badge.techxconf.com/badge/15D1FC9D-41F4-4F49-9CD9-44A3DD048381',
+  },
+  {
+    title: 'IBM Z Day 2024 — AI & Data Certificate',
+    issuer: 'BeMyApp',
+    date: 'Oct 2024',
+    url: 'https://www.virtualbadge.io/certificate-validator?credential=2f53ccd6-2782-4735-89d6-6e63927a517c',
+  },
+  {
+    title: 'AI For Everyone',
+    issuer: 'DeepLearning.AI',
+    date: 'Sep 2024',
+    url: 'https://www.coursera.org/account/accomplishments/verify/J4GHYNXKKD24',
+  },
+  {
+    title: 'NextGen Intelli: Generative AI',
+    issuer: 'College of Engineering, Guindy',
+    date: 'Mar 2024',
+  },
+  {
+    title: 'Python Programming for AI & Data Science',
+    issuer: 'Anna University Chennai',
+    date: 'Dec 2022',
   },
 ]
 

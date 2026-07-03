@@ -23,8 +23,11 @@ export default function Experience() {
               <span className="text-xs uppercase tracking-widest text-white/40">
                 {item.year}
               </span>
+              <span className="text-[8px] uppercase tracking-normal text-white/35 border border-white/10 rounded-full px-1 py-[0.5px] leading-tight">
+                {item.type === 'education' ? 'Education' : 'Work'}
+              </span>
               {item.current && (
-                <span className="text-[10px] uppercase tracking-widest text-white/70 border border-white/20 rounded-full px-2 py-0.5">
+                <span className="text-[8px] uppercase tracking-normal text-white/70 border border-white/20 rounded-full px-1 py-[0.5px] leading-tight">
                   Current
                 </span>
               )}
