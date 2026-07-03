@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Icon } from '@iconify/react'
-import { techStack } from '../data/content'
+import type { TechStack } from '../types'
 
 type TechItem = {
   icon: string
@@ -101,7 +101,7 @@ function TechBadge({ icon, label, emphasis = false }: TechItem & { emphasis?: bo
   )
 }
 
-export default function TechStackBanner() {
+export default function TechStackBanner({ techStack }: { techStack: TechStack }) {
   return (
     <section id="stack" className="max-w-7xl sm:px-6 sm:mt-16 mt-12 mx-auto px-4">
       <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 sm:p-8">

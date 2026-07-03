@@ -1,6 +1,6 @@
-import { timeline } from '../data/content'
+import type { TimelineItem } from '../types'
 
-export default function Experience() {
+export default function Experience({ timeline }: { timeline: TimelineItem[] }) {
   return (
     <section
       id="experience"

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
-import { projects } from '../data/content'
 import ProjectCard from './ProjectCard'
+import type { Project } from '../types'
 
-export default function RecentWork() {
+export default function RecentWork({ projects }: { projects: Project[] }) {
   const featured = projects.filter((p) => p.featured)
 
   return (

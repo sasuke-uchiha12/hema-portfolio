@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
-import { type BlogPost } from '../data/content'
+import type { BlogPost } from '../types'
 
 export default function BlogCard({ post }: { post: BlogPost }) {
   return (

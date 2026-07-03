@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import {
   Bot,
@@ -12,7 +13,10 @@ import {
 } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { projects } from '../data/content'
+import LoadingState from '../components/LoadingState'
+import ErrorState from '../components/ErrorState'
+import { getProfile, getProject } from '../lib/api'
+import type { Profile, Project } from '../types'
 
 const iconMap: Record<string, LucideIcon> = {
   Bot,
@@ -25,12 +29,60 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function ProjectDetail() {
   const { slug } = useParams()
-  const project = projects.find((p) => p.slug === slug)
+  const [project, setProject] = useState<Project | null>(null)
+  const [profile, setProfile] = useState<Profile | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    let cancelled = false
+
+    Promise.all([slug ? getProject(slug) : Promise.resolve(null), getProfile()])
+      .then(([projectData, profileData]) => {
+        if (!cancelled) {
+          setProject(projectData)
+          setProfile(profileData)
+        }
+      })
+      .catch((err: unknown) => {
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : 'Unexpected loading error')
+        }
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setLoading(false)
+        }
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [slug])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen">
+        <Navbar resumeUrl={profile?.identity.resumeUrl} />
+        <LoadingState label="Loading project" />
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen">
+        <Navbar resumeUrl={profile?.identity.resumeUrl} />
+        <ErrorState message={error} />
+        {profile && <Footer profile={profile} />}
+      </div>
+    )
+  }
 
   if (!project) {
     return (
       <div className="min-h-screen">
-        <Navbar />
+        <Navbar resumeUrl={profile?.identity.resumeUrl} />
         <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-16 text-center">
           <h1 className="text-2xl tracking-tight">Project not found</h1>
           <Link
@@ -41,7 +93,7 @@ export default function ProjectDetail() {
             <span>Back to all projects</span>
           </Link>
         </section>
-        <Footer />
+        {profile && <Footer profile={profile} />}
       </div>
     )
   }
@@ -51,7 +103,7 @@ export default function ProjectDetail() {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar resumeUrl={profile?.identity.resumeUrl} />
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 mt-12 sm:mt-16">
         <Link
@@ -158,7 +210,7 @@ export default function ProjectDetail() {
         )}
       </article>
 
-      <Footer />
+      {profile && <Footer profile={profile} />}
     </div>
   )
 }

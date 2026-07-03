@@ -1,7 +1,7 @@
 import { Handshake } from 'lucide-react'
-import { about } from '../data/content'
+import type { About as AboutContent } from '../types'
 
-export default function About() {
+export default function About({ about }: { about: AboutContent }) {
   return (
     <section
       id="about"

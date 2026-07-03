@@ -1,4 +1,5 @@
 import vitPost from '../content/blog/building-a-vision-transformer.md?raw'
+import type { BlogPost, Certification, Profile, Project, TimelineItem } from '../types'
 
 // ─── IDENTITY ────────────────────────────────────────────────────────────────
 export const identity = {
@@ -31,28 +32,6 @@ export const heroImage = {
 }
 
 // ─── PROJECTS ────────────────────────────────────────────────────────────────
-export type Project = {
-  slug: string
-  // Real screenshot or architecture diagram. Optional — cards/detail pages
-  // fall back to a clean monochrome placeholder until a real image is added.
-  image?: string
-  alt: string
-  aspect: '16/9' | '4/3'
-  category: string
-  categoryIcon: string
-  title: string
-  description: string
-  year?: string
-  // Longer case-study write-up shown on the project detail page.
-  details?: string
-  highlights?: string[]
-  tech?: string[]
-  link?: string
-  // Shown on the homepage Recent Work section. All projects (featured or
-  // not) always appear on the full /projects page.
-  featured?: boolean
-}
-
 export const projects: Project[] = [
   {
     slug: 'hiveshield',
@@ -187,14 +166,6 @@ export const techStack = {
 }
 
 // ─── TIMELINE ────────────────────────────────────────────────────────────────
-export type TimelineItem = {
-  year: string
-  role: string
-  description: string
-  type: 'education' | 'work'
-  current?: boolean
-}
-
 export const timeline: TimelineItem[] = [
   {
     year: 'Oct 2025 — present',
@@ -235,13 +206,6 @@ export const timeline: TimelineItem[] = [
 ]
 
 // ─── CERTIFICATIONS ──────────────────────────────────────────────────────────
-export type Certification = {
-  title: string
-  issuer: string
-  date: string
-  url?: string
-}
-
 export const certifications: Certification[] = [
   {
     title: "CS50's Introduction to Artificial Intelligence with Python",
@@ -345,17 +309,6 @@ export const footerCredit = 'Hemashruthi Durairaj — Open to internships & rese
 // ─── BLOG ────────────────────────────────────────────────────────────────────
 // NOTE: mock content for now. Maps 1:1 to a future Supabase `blog_posts` table:
 // slug, title, excerpt, date, readingTime, tags, coverImage, content (markdown).
-export type BlogPost = {
-  slug: string
-  title: string
-  excerpt: string
-  date: string
-  readingTime: string
-  tags: string[]
-  coverImage?: string
-  content: string // markdown
-}
-
 export const blogPosts: BlogPost[] = [
   {
     slug: 'building-a-vision-transformer',
@@ -368,3 +321,14 @@ export const blogPosts: BlogPost[] = [
     content: vitPost,
   },
 ]
+
+export const profile: Profile = {
+  identity,
+  heroStats,
+  heroImage,
+  about,
+  social,
+  techStack,
+  footerTagline,
+  footerCredit,
+}
