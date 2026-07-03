@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import ProjectsPage from './pages/ProjectsPage'
 import ProjectDetail from './pages/ProjectDetail'
+import BlogPage from './pages/BlogPage'
+import BlogPostPage from './pages/BlogPostPage'
 
 // React Router doesn't scroll on navigation by default — jump to the
 // target hash if present, otherwise reset to the top of the new page.
@@ -31,6 +33,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/:slug" element={<ProjectDetail />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
       </Routes>
     </BrowserRouter>
   )

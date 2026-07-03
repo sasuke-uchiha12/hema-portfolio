@@ -1,12 +1,15 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Download, Menu, X } from 'lucide-react'
 import { identity } from '../data/content'
 
-const navLinks = [
+// `to` = client-side route (react-router Link); `href` = homepage anchor.
+type NavLink = { label: string; href?: string; to?: string }
+
+const navLinks: NavLink[] = [
   { href: '/#work', label: 'Work' },
   { href: '/#experience', label: 'Experience' },
-  { href: '/#certifications', label: 'Certs' },
-  { href: '/#stack', label: 'Stack' },
+  { to: '/blog', label: 'Blog' },
   { href: '/#about', label: 'About' },
   { href: '/#contact', label: 'Contact' },
 ]
@@ -32,15 +35,25 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-6">
-          {navLinks.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm text-white/70 hover:text-white tracking-tight transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
+          {navLinks.map((l) =>
+            l.to ? (
+              <Link
+                key={l.label}
+                to={l.to}
+                className="text-sm text-white/70 hover:text-white tracking-tight transition-colors"
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.label}
+                href={l.href}
+                className="text-sm text-white/70 hover:text-white tracking-tight transition-colors"
+              >
+                {l.label}
+              </a>
+            ),
+          )}
         </div>
 
         {/* Actions */}
@@ -68,16 +81,27 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden mt-3 rounded-2xl border border-white/10 bg-white/5 shadow-sm overflow-hidden">
           <div className="px-4 py-3 grid gap-2">
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-sm text-white/90 tracking-tight py-1.5"
-              >
-                {l.label}
-              </a>
-            ))}
+            {navLinks.map((l) =>
+              l.to ? (
+                <Link
+                  key={l.label}
+                  to={l.to}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-sm text-white/90 tracking-tight py-1.5"
+                >
+                  {l.label}
+                </Link>
+              ) : (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-sm text-white/90 tracking-tight py-1.5"
+                >
+                  {l.label}
+                </a>
+              ),
+            )}
           </div>
           <div className="border-t border-white/10 px-4 py-3">
             <a

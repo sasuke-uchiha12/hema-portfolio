@@ -1,3 +1,5 @@
+import vitPost from '../content/blog/building-a-vision-transformer.md?raw'
+
 // ─── IDENTITY ────────────────────────────────────────────────────────────────
 export const identity = {
   name: 'Hemashruthi Durairaj',
@@ -339,3 +341,30 @@ export const social = {
 
 export const footerTagline = 'Build with AI.'
 export const footerCredit = 'Hemashruthi Durairaj — Open to internships & research roles'
+
+// ─── BLOG ────────────────────────────────────────────────────────────────────
+// NOTE: mock content for now. Maps 1:1 to a future Supabase `blog_posts` table:
+// slug, title, excerpt, date, readingTime, tags, coverImage, content (markdown).
+export type BlogPost = {
+  slug: string
+  title: string
+  excerpt: string
+  date: string
+  readingTime: string
+  tags: string[]
+  coverImage?: string
+  content: string // markdown
+}
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug: 'building-a-vision-transformer',
+    title: 'Building a Vision Transformer from scratch',
+    excerpt:
+      'No timm, no pretrained weights — just attention. What I learned typing out every layer of a ViT and training it on CIFAR-10.',
+    date: 'June 12, 2026',
+    readingTime: '5 min read',
+    tags: ['Computer Vision', 'PyTorch', 'Deep Learning'],
+    content: vitPost,
+  },
+]
