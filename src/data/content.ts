@@ -30,18 +30,30 @@ export const heroImage = {
 
 // ─── PROJECTS ────────────────────────────────────────────────────────────────
 export type Project = {
-  image: string
+  slug: string
+  // Real screenshot or architecture diagram. Optional — cards/detail pages
+  // fall back to a clean monochrome placeholder until a real image is added.
+  image?: string
   alt: string
   aspect: '16/9' | '4/3'
   category: string
   categoryIcon: string
   title: string
   description: string
+  year?: string
+  // Longer case-study write-up shown on the project detail page.
+  details?: string
+  highlights?: string[]
+  tech?: string[]
   link?: string
+  // Shown on the homepage Recent Work section. All projects (featured or
+  // not) always appear on the full /projects page.
+  featured?: boolean
 }
 
 export const projects: Project[] = [
   {
+    slug: 'hiveshield',
     image: '/images/f16eab49-7c29-4933-aca8-f41b2c337f6f_800w.jpg',
     alt: 'HIVESHIELD',
     aspect: '16/9',
@@ -50,9 +62,20 @@ export const projects: Project[] = [
     title: 'HIVESHIELD — DDoS Detection',
     description:
       'Swarm-intelligence ML system using MOHADA (hybrid Dragonfly + Bee Colony algorithm) with SVM classifiers to detect and mitigate DDoS attacks in Software-Defined Networks. Simulated in Mininet.',
+    year: 'Mar 2024 — Oct 2024',
+    details:
+      'HIVESHIELD is an ML-based solution leveraging advanced swarm intelligence with MOHADA (Multi-Objective Hybrid Artificial Dragonfly Algorithm) — a hybrid feature-selection framework combining the Dragonfly and Artificial Bee Colony algorithms with SVM classifiers to detect and mitigate DDoS attacks. Network simulations in Mininet provided realistic testing and evaluation of the system in a controlled environment, contributing to the application of swarm intelligence in SDN cybersecurity.',
+    highlights: [
+      'Hybrid MOHADA feature selection (Dragonfly + Artificial Bee Colony)',
+      'SVM classifiers for DDoS detection and mitigation',
+      'Realistic network simulation and evaluation in Mininet',
+    ],
+    tech: ['Python', 'Machine Learning', 'SVM', 'Mininet', 'SDN'],
     link: 'https://github.com/Hemashruthi/Hiveshield',
+    featured: true,
   },
   {
+    slug: 'vision-transformer',
     image: '/images/7fc6a2de-15db-4034-8a23-06b7a43997f6_800w.jpg',
     alt: 'Vision Transformer',
     aspect: '4/3',
@@ -61,9 +84,20 @@ export const projects: Project[] = [
     title: 'Vision Transformer (ViT)',
     description:
       'From-scratch ViT implementation with patch embeddings, multi-head self-attention, and positional encodings applied to CIFAR-10 classification using PyTorch.',
+    year: 'Sep 2024 — Oct 2024',
+    details:
+      'A from-scratch Vision Transformer exploring how Transformers — originally designed for NLP — can achieve high performance in computer vision by representing images as sequences of patches. Built and trained on the CIFAR-10 dataset for multiclass image classification.',
+    highlights: [
+      'Patch embedding mechanism converting images into patch sequences',
+      'Multi-head self-attention, positional embeddings, and transformer encoder layers',
+      'Complete ViT architecture applied to CIFAR-10 multiclass classification',
+    ],
+    tech: ['Python', 'PyTorch', 'Torchvision', 'NumPy', 'CIFAR-10'],
     link: 'https://github.com/Hemashruthi/VisionTransformer-CIFAR10',
+    featured: true,
   },
   {
+    slug: 'genai-threat-hunting',
     image: '/images/41f44e91-a4d8-4042-8253-0c6a79be833b_800w.jpg',
     alt: 'GenAI Threat Hunting',
     aspect: '4/3',
@@ -72,8 +106,12 @@ export const projects: Project[] = [
     title: 'GenAI for Threat Hunting',
     description:
       'Integrated Generative AI into the cyber threat hunting pipeline at SETS (Govt. of India), delivering context-rich, explainable threat insights for improved detection.',
+    year: 'Jan 2025 — Jul 2025',
+    tech: ['Generative AI', 'LLMs', 'Threat Intelligence'],
+    featured: true,
   },
   {
+    slug: 'anpr-face-recognition',
     image: '/images/a2cd53da-e321-41c2-9467-565b1a1b0b52_800w.jpg',
     alt: 'ANPR System',
     aspect: '16/9',
@@ -82,8 +120,11 @@ export const projects: Project[] = [
     title: 'ANPR + Face Recognition',
     description:
       'Automatic Number Plate Recognition system integrated with face recognition, built as part of applied GenAI coursework.',
+    tech: ['Computer Vision', 'Face Recognition', 'Generative AI'],
+    featured: true,
   },
   {
+    slug: 'rag-pipeline',
     image: '/images/f826149d-7e8d-4b68-a4fd-cc16fb762142_800w.jpg',
     alt: 'RAG pipeline',
     aspect: '16/9',
@@ -92,8 +133,11 @@ export const projects: Project[] = [
     title: 'RAG Pipeline Experiments',
     description:
       'Hands-on exploration of vector embeddings, hybrid retrieval, chunk strategies, and graph-based RAG for enhanced LLM context retrieval.',
+    tech: ['RAG', 'Vector Embeddings', 'LLMs'],
+    featured: true,
   },
   {
+    slug: 'ngp-websmart',
     image: '/images/36460156-d7ce-43aa-89af-e013fb87ccfc_800w.jpg',
     alt: 'Frontend projects',
     aspect: '4/3',
@@ -102,6 +146,9 @@ export const projects: Project[] = [
     title: 'Web Development @ NGP Websmart',
     description:
       'Built and shipped frontend features using React.js and Vuetify during a 7-month software developer internship.',
+    year: 'Jun 2023 — Dec 2023',
+    tech: ['React.js', 'Vuetify', 'JavaScript'],
+    featured: true,
   },
 ]
 

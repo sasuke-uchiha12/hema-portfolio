@@ -3,12 +3,12 @@ import { Download, Menu, X } from 'lucide-react'
 import { identity } from '../data/content'
 
 const navLinks = [
-  { href: '#work', label: 'Work' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#certifications', label: 'Certs' },
-  { href: '#stack', label: 'Stack' },
-  { href: '#about', label: 'About' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#work', label: 'Work' },
+  { href: '/#experience', label: 'Experience' },
+  { href: '/#certifications', label: 'Certs' },
+  { href: '/#stack', label: 'Stack' },
+  { href: '/#about', label: 'About' },
+  { href: '/#contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
