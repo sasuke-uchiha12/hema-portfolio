@@ -4,8 +4,9 @@ import { identity } from '../data/content'
 
 const navLinks = [
   { href: '#work', label: 'Work' },
+  { href: '#experience', label: 'Experience' },
   { href: '#stack', label: 'Stack' },
-  { href: '#evals', label: 'Evals' },
+  { href: '#code', label: 'Code' },
   { href: '#about', label: 'About' },
   { href: '#contact', label: 'Contact' },
 ]

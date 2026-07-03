@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Icon } from '@iconify/react'
+import { techStack } from '../data/content'
 
 type TechItem = {
   icon: string
@@ -89,7 +90,7 @@ function TechBadge({ icon, label }: TechItem) {
 
 export default function TechStackBanner() {
   return (
-    <section className="max-w-7xl sm:px-6 sm:mt-16 mt-12 mx-auto px-4">
+    <section id="stack" className="max-w-7xl sm:px-6 sm:mt-16 mt-12 mx-auto px-4">
       <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-neutral-950 p-6 sm:p-8">
         {/* Background accents */}
         <div className="absolute inset-0 pointer-events-none">
@@ -117,6 +118,12 @@ export default function TechStackBanner() {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-white/10 text-center">
+            <p className="text-xs text-white/40">
+              <span className="text-white/60">Focus areas:</span> {techStack.focus}
+            </p>
           </div>
         </div>
       </div>

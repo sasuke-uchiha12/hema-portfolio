@@ -138,7 +138,7 @@ export const techStack = {
 }
 
 // ─── CODE SNIPPET ─────────────────────────────────────────────────────────────
-export const ragSnippet = `import torch
+export const codeSnippet = `import torch
 from torch import nn
 
 class PatchEmbedding(nn.Module):
