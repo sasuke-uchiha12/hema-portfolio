@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { ChevronDown, ExternalLink } from 'lucide-react'
-import { certifications } from '../data/content'
+import type { Certification } from '../types'
 
-export default function Certifications() {
+export default function Certifications({ certifications }: { certifications: Certification[] }) {
   const [open, setOpen] = useState(false)
 
   return (

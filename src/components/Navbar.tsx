@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Download, Menu, X } from 'lucide-react'
-import { identity } from '../data/content'
 
 // `to` = client-side route (react-router Link); `href` = homepage anchor.
 type NavLink = { label: string; href?: string; to?: string }
@@ -14,7 +13,7 @@ const navLinks: NavLink[] = [
   { href: '/#contact', label: 'Contact' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ resumeUrl = '#' }: { resumeUrl?: string }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
@@ -59,7 +58,7 @@ export default function Navbar() {
         {/* Actions */}
         <div className="flex items-center gap-2">
           <a
-            href={identity.resumeUrl}
+            href={resumeUrl}
             className="hidden sm:inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium tracking-tight text-white bg-white/10 hover:bg-white/15 border border-white/10 shadow-sm transition-colors"
           >
             <Download className="w-4 h-4" />
@@ -105,7 +104,7 @@ export default function Navbar() {
           </div>
           <div className="border-t border-white/10 px-4 py-3">
             <a
-              href={identity.resumeUrl}
+              href={resumeUrl}
               className="inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium tracking-tight text-neutral-900 bg-white hover:bg-white/90 border border-white/10 transition-colors"
             >
               <Download className="w-4 h-4" />

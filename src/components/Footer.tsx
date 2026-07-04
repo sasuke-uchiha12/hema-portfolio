@@ -1,7 +1,9 @@
 import { Mail, Calendar, Twitter, Github, Globe, Linkedin } from 'lucide-react'
-import { identity, social, footerTagline, footerCredit } from '../data/content'
+import type { Profile } from '../types'
 
-export default function Footer() {
+export default function Footer({ profile }: { profile: Profile }) {
+  const { identity, social, footerTagline, footerCredit } = profile
+
   return (
     <section
       id="contact"

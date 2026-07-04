@@ -1,18 +1,70 @@
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Markdown from '../components/Markdown'
-import { blogPosts } from '../data/content'
+import LoadingState from '../components/LoadingState'
+import ErrorState from '../components/ErrorState'
+import { getBlogPost, getProfile } from '../lib/api'
+import type { BlogPost, Profile } from '../types'
 
 export default function BlogPostPage() {
   const { slug } = useParams()
-  const post = blogPosts.find((p) => p.slug === slug)
+  const [post, setPost] = useState<BlogPost | null>(null)
+  const [profile, setProfile] = useState<Profile | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    let cancelled = false
+
+    Promise.all([slug ? getBlogPost(slug) : Promise.resolve(null), getProfile()])
+      .then(([postData, profileData]) => {
+        if (!cancelled) {
+          setPost(postData)
+          setProfile(profileData)
+        }
+      })
+      .catch((err: unknown) => {
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : 'Unexpected loading error')
+        }
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setLoading(false)
+        }
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [slug])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen">
+        <Navbar resumeUrl={profile?.identity.resumeUrl} />
+        <LoadingState label="Loading post" />
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen">
+        <Navbar resumeUrl={profile?.identity.resumeUrl} />
+        <ErrorState message={error} />
+        {profile && <Footer profile={profile} />}
+      </div>
+    )
+  }
 
   if (!post) {
     return (
       <div className="min-h-screen">
-        <Navbar />
+        <Navbar resumeUrl={profile?.identity.resumeUrl} />
         <section className="max-w-3xl mx-auto px-4 sm:px-6 mt-16 text-center">
           <h1 className="text-2xl tracking-tight">Post not found</h1>
           <Link
@@ -23,14 +75,14 @@ export default function BlogPostPage() {
             <span>Back to blog</span>
           </Link>
         </section>
-        <Footer />
+        {profile && <Footer profile={profile} />}
       </div>
     )
   }
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar resumeUrl={profile?.identity.resumeUrl} />
 
       <article className="max-w-3xl mx-auto px-4 sm:px-6 mt-12 sm:mt-16">
         <Link
@@ -77,7 +129,7 @@ export default function BlogPostPage() {
         </div>
       </article>
 
-      <Footer />
+      {profile && <Footer profile={profile} />}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Bot, Code2, Database, Shield, Eye, Camera, type LucideIcon } from 'lucide-react'
-import { type Project } from '../data/content'
+import type { Project } from '../types'
 
 const iconMap: Record<string, LucideIcon> = {
   Bot,

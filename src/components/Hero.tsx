@@ -1,7 +1,9 @@
 import { ArrowRight, Mail, MapPin, Cpu, Check } from 'lucide-react'
-import { identity, heroStats, heroImage } from '../data/content'
+import type { Profile } from '../types'
 
-export default function Hero() {
+export default function Hero({ profile }: { profile: Profile }) {
+  const { identity, heroStats, heroImage } = profile
+
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 sm:mt-16">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
